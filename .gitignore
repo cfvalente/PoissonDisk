@@ -26,11 +26,39 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
-
+Icon
 # Thumbnails
 ._*
 
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+
+Debug/PoissonDisk.exe
+Debug/PoissonDisk.ilk
+Debug/PoissonDisk.pdb
+PoissonDisk.opensdf
+Debug/PoissonDisk.exe
+Debug/PoissonDisk.ilk
+Debug/PoissonDisk.pdb
+PoissonDisk.opensdf
+PoissonDisk.opensdf
+PoissonDisk.v11.suo
+PoissonDisk.v11.suo
+PoissonDisk/Debug/cl.command.1.tlog
+PoissonDisk/Debug/CL.read.1.tlog
+PoissonDisk/Debug/CL.write.1.tlog
+PoissonDisk/Debug/link-cvtres.read.1.tlog
+PoissonDisk/Debug/link-cvtres.write.1.tlog
+PoissonDisk/Debug/link-cvtres.write.1.tlog
+PoissonDisk/Debug/link-rc.read.1.tlog
+PoissonDisk/Debug/link-rc.read.1.tlog
+PoissonDisk/Debug/link-rc.write.1.tlog
+PoissonDisk/Debug/link.command.1.tlog
+PoissonDisk/Debug/link.read.1.tlog
+PoissonDisk/Debug/link.write.1.tlog
+PoissonDisk/Debug/poisson.obj
+PoissonDisk/Debug/PoissonDisk.lastbuildstate
+PoissonDisk/Debug/PoissonDisk.log
+PoissonDisk/Debug/vc110.idb
+*.tlog

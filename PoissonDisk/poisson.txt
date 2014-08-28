@@ -1,0 +1,353 @@
+LookAt 7 7 0 15.5 .9 10   0 1 0
+Camera "perspective" "float fov" [40]
+
+Sampler "lowdiscrepancy" "integer pixelsamples" [4]
+PixelFilter "box"
+
+Film "image" "integer xresolution" [400] "integer yresolution" [400]
+
+WorldBegin
+
+# lights
+AttributeBegin
+#Rotate -90 1 0 0
+LightSource "infinite" "integer nsamples" [16] "color L" [1 1 1]
+  "string mapname" ["textures/uffizi_latlong.exr"]
+#  "string mapname" ["textures/skylight-sunset.exr"]
+AttributeEnd
+
+#floor
+Texture "tmap" "color" "imagemap" "string filename" "textures/lines.exr"
+"float uscale" 60 "float vscale" 60
+Texture "tbump-tex" "float" "imagemap" "string filename" "textures/lines.exr"
+"float uscale" 60 "float vscale" 60
+Texture "sbump" "float" "scale" "texture tex1" "tbump-tex"
+"float  tex2" [-.25]
+Material "substrate" "texture Kd" "tmap"
+"color Ks" [.5 .5 .5] "float uroughness" [.05]
+"float vroughness" [.05]
+"texture bumpmap" "sbump"
+Shape "trianglemesh" "integer indices" [0 1 2 0 3 2 ]
+"point P" [ -100 0 -100  100 0 -100   100 0 100   -100 0 100 ]
+
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 2.16236 8.84385 9.67592
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 3.665 3.74266 8.35315
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 6.14805 13.9759 7.33719
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 1.98235 8.95931 1.92283
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 4.66818 10.0359 5.39422
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 1.88694 14.0102 12.347
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 7.88561 6.67369 4.81822
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 2.37524 7.55197 14.4492
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 3.19473 1.91939 0.753008
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 7.00317 6.70104 9.24849
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 12.3306 5.41332 9.43882
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 0.0944114 8.2512 5.5017
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 8.84229 1.96304 2.66051
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 9.09032 10.5972 9.59676
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 12.2848 6.5947 3.33697
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 13.5528 11.489 5.12266
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 6.88547 7.65055 14.1854
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 14.1052 8.80387 12.612
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 8.74865 13.4498 13.9656
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 5.42838 2.14146 13.5723
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 8.52841 2.74192 9.70775
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 13.1328 2.67523 2.81834
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 9.7868 9.08345 0.467415
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 14.1064 11.9158 0.502522
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 9.67341 14.7031 3.84043
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 14.1047 13.1911 13.6283
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 0.74907 2.77638 13.1711
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 12.9681 0.217386 7.07652
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 5.90209 11.2216 0.321287
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 1.64668 0.36641 9.42407
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 12.3938 0.412515 14.3207
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 13.8275 4.90737 13.6999
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 14.9475 4.89179 6.29003
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 4.75382 11.1004 12.7592
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 2.3853 0.307148 4.73436
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 0.292741 14.6183 2.60195
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 12.9476 14.3383 8.11467
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 3.96229 4.67338 4.13352
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 0.431289 14.2068 7.16194
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+
+AttributeBegin
+Material "metal"  "float roughness" [.001]
+"spectrum eta" "spds/metals/Au.eta.spd"
+"spectrum k" "spds/metals/Au.k.spd"
+Translate 7.32962 5.33992 0.432561
+ Shape "sphere" "float radius" [1]
+AttributeEnd
+

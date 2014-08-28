@@ -4,6 +4,7 @@
 #include <random>
 #include <time.h>
 #include <omp.h>
+#include <fstream>
 
 #define PI 3.14159265359
 
@@ -106,7 +107,7 @@ struct point create_random_point(struct point p, double min_dist)
 	double r3 = rand_double(0,1); 
 	double radius = min_dist * (r1 + 1);
 	double theta = 2 * PI * r2;
-	double phi = 2 * PI * r3;
+	double phi = PI * r3;
 
 	generated_point.x = p.x+radius*cos(theta)*sin(phi);
 	generated_point.y = p.y+radius*sin(theta)*sin(phi);
@@ -209,27 +210,71 @@ void process_list(int width, int heigth, int length, double min_dist, int point_
 	}
 }
 
-void create_spheres_pbrt()
+
+void create_spheres_pbrt(int width, int heigth, int length, double sphere_size)
 {
+	int xres, yres, nsamples;
+	xres = 400;
+	yres = 400;
+	nsamples = 16;
+	ofstream out;
+	out.open ("poisson.pbrt");
+	out << "LookAt " << width/2.0 << " " << heigth/2.0 << " " << "0" << " 0 -0.2 1   0 1 0\n";
+	out << "Camera \"perspective\" \"float fov\" [40]\n\n";
+
+	out << "Sampler \"lowdiscrepancy\" \"integer pixelsamples\" [4]\n";
+	out << "PixelFilter \"box\"\n\n";
+
+	out << "Film \"image\" \"integer xresolution\" [" << xres << "] \"integer yresolution\" [" << yres << "]\n\n";
+
+	out << "WorldBegin\n\n";
+
+	out << "\# lights\n";
+	out << "AttributeBegin\n";
+	out << "\#Rotate -90 1 0 0\n";
+    out << "LightSource \"infinite\" \"integer nsamples\" [" << nsamples << "] \"color L\" [1 1 1]\n";
+    out << "  \"string mapname\" [\"textures/uffizi_latlong.exr\"]\n";
+	out << "#  \"string mapname\" [\"textures/skylight-sunset.exr\"]\n";
+	out << "AttributeEnd\n\n";
+
+	out << "#floor\n";
+	out << "Texture \"tmap\" \"color\" \"imagemap\" \"string filename\" \"textures/lines.exr\"\n";
+	out << "\"float uscale\" 60 \"float vscale\" 60\n";
+	out << "Texture \"tbump-tex\" \"float\" \"imagemap\" \"string filename\" \"textures/lines.exr\"\n";
+	out << "\"float uscale\" 60 \"float vscale\" 60\n";
+	out << "Texture \"sbump\" \"float\" \"scale\" \"texture tex1\" \"tbump-tex\"\n";
+	out << "\"float  tex2\" [-.25]\n";
+	out << "Material \"substrate\" \"texture Kd\" \"tmap\"\n"; 
+	out << "\"color Ks\" [.5 .5 .5] \"float uroughness\" [.05]\n";
+	out << "\"float vroughness\" [.05]\n";
+	out << "\"texture bumpmap\" \"sbump\"\n"; 
+	out << "Shape \"trianglemesh\" \"integer indices\" [0 1 2 0 3 2 ]\n";
+    out << "\"point P\" [ -100 0 -100  100 0 -100   100 0 100   -100 0 100 ]\n\n\n";
 	for(int  i = 0; i<points.size(); i++)
 	{
 		cout << "P[" << i << "] -- X: " << points[i].x << "  - Y: " << points[i].y << "  - Z: " << points[i].z << endl;
+		out << "AttributeBegin\nMaterial \"metal\"  \"float roughness\" [.001]\n\"spectrum eta\" \"spds/metals/Au.eta.spd\"\n\"spectrum k\" \"spds/metals/Au.k.spd\"\n";
+		out << "Translate " << points[i].x << " " << points[i].y << " " << points[i].z << "\n Shape \"sphere\" \"float radius\" [" << sphere_size << "]\n";
+		out << "AttributeEnd\n\n";
 	}
+	out << "WorldEnd\n";
+
+	out.close();
 }
 
 int main(int argc, char *argv[])
 {
 	int width, heigth,length;
-	double min_dist;
 	int point_count = 30;
+	double sphere_size = 1.0;
+	double min_dist = 4;
 
-	min_dist = 50;
-	width = 200;
-	heigth = 100;
-	length = 50;
+	width = 15;
+	heigth = 15;
+	length = 15;
 	init(width, heigth,length, min_dist);
 	process_list(width, heigth, length, min_dist, point_count);
-	create_spheres_pbrt();
+	create_spheres_pbrt(width, heigth,length, sphere_size);
 
 	return 0;
 }
