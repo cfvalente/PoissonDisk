@@ -262,6 +262,27 @@ void create_spheres_pbrt(int width, int heigth, int length, double sphere_size)
 	out.close();
 }
 
+
+void create_lsystem_pbrt(int width, int heigth, int length)
+{
+	ofstream out;
+	out.open ("poisson.txt");
+
+	for(int  i = 0; i<points.size(); i++)
+	{
+		cout << "Translate[" << i << "] -- X: " << (width/2.0)-points[i].x << "  - Y: " << (heigth/2.0)-points[i].y << "  - Z: " << -points[i].z << endl;
+		out << "AttributeBegin\n";
+		out << "Translate " << (width/2.0)-points[i].x << " " << (heigth/2.0)-points[i].y << " " << (length/2.0)-points[i].z << "\n";
+		out << "Rotate " << rand_double(0, 360) << "0 1 0\n";
+		out << "Rotate -90 1 0 0\n";
+		out << "Material \"matte\" \"color Kd\" [0.6 1.0 0.6]\n";
+		out << "Shape \"lsystem\" \"string lsystem\" \"teste1.txt\"\n"; 
+		out << "AttributeEnd\n\n";
+	}
+	out.close();
+}
+
+
 int main(int argc, char *argv[])
 {
 	int width, heigth,length;
@@ -269,12 +290,12 @@ int main(int argc, char *argv[])
 	double sphere_size = 1.0;
 	double min_dist = 4;
 
-	width = 15;
-	heigth = 15;
-	length = 15;
+	width = 900;
+	heigth = 1;
+	length = 200;
 	init(width, heigth,length, min_dist);
 	process_list(width, heigth, length, min_dist, point_count);
-	create_spheres_pbrt(width, heigth,length, sphere_size);
-
+	//create_spheres_pbrt(width, heigth,length, sphere_size);
+	create_lsystem_pbrt(width, heigth, length);
 	return 0;
 }
