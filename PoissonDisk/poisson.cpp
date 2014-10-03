@@ -272,10 +272,11 @@ void create_lsystem_pbrt(int width, int heigth, int length)
 	{
 		cout << "Translate[" << i << "] -- X: " << (width/2.0)-points[i].x << "  - Y: " << (heigth/2.0)-points[i].y << "  - Z: " << -points[i].z << endl;
 		out << "AttributeBegin\n";
-		out << "Translate " << (width/2.0)-points[i].x << " " << (heigth/2.0)-points[i].y << " " << (length/2.0)-points[i].z << "\n";
-		out << "Rotate " << rand_double(0, 360) << "0 1 0\n";
-		out << "Rotate -90 1 0 0\n";
-		out << "Material \"matte\" \"color Kd\" [0.6 1.0 0.6]\n";
+		out << "Translate " << (width/2.0)-points[i].x << " " << (heigth/2.0)-points[i].y << " " << -points[i].z << "\n";
+		out << "Scale 0.35 0.35 0.35\n";
+		out << "Rotate " << rand_double(0, 360) << " 0 1 0\n";
+		out << "Rotate " << -(100-rand_double(0, 20)) << " 1 0 0\n";
+		out << "Material \"uber\" \"color Kd\" [0.25 0.70 0.25] \"color Ks\" [0.25 0.70 0.25] \"color Kr\" [0.25 0.70 0.25]\n";
 		out << "Shape \"lsystem\" \"string lsystem\" \"teste1.txt\"\n"; 
 		out << "AttributeEnd\n\n";
 	}
@@ -286,12 +287,12 @@ void create_lsystem_pbrt(int width, int heigth, int length)
 int main(int argc, char *argv[])
 {
 	int width, heigth,length;
-	int point_count = 30;
-	double sphere_size = 1.0;
-	double min_dist = 4;
+	int point_count = 60;
+	double sphere_size = 9.0;
+	double min_dist = 3;
 
-	width = 900;
-	heigth = 1;
+	width = 500;
+	heigth = 2;
 	length = 200;
 	init(width, heigth,length, min_dist);
 	process_list(width, heigth, length, min_dist, point_count);
